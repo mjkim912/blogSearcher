@@ -156,53 +156,5 @@ public class SearchController {
 		
 		return mp;
 	}
-	
-	/**
-	 * backup
-	@ResponseBody
-	@PostMapping("/searchKeyword")
-	public Map<String, Object> searchKeyword(
-			@RequestBody Map<String, Object> param
-			) throws WebClientResponseException {
-		Map<String, Object> mp = new HashMap<String, Object>();
-		
-		Mono<ResponseData> result = WebClient.builder()
-				.baseUrl("https://dapi.kakao.com")
-				.defaultHeader("Authorization", "KakaoAK 9a8b02ffe3dd5ef0889bb65eb70dd633")
-				.build()
-				.post()
-				.uri(builder -> builder.path("/v2/search/blog")
-                        .queryParam("query", param.get("keyword"))
-                        .queryParam("sort", param.get("sort"))
-                        .queryParam("size", param.get("size"))
-                        .queryParam("page", param.get("page"))
-                        .build()
-                )
-				.retrieve()
-				.onStatus( 
-					    HttpStatus::is4xxClientError,
-					    response -> Mono.error(new RuntimeException("API not founded"))) 
-				.onStatus(
-					    HttpStatus::is5xxServerError,
-					    response -> Mono.error(new RuntimeException("Server is not responding")))
-				.bodyToMono(ResponseData.class);
-				
-				
-				
-				//.block();
-		
-		ResponseData res = result.share().block();
-		
-		topSearchedService.save(param.get("keyword").toString());
-		
-		mp.put("meta", res.getMeta());
-		mp.put("documents", res.getDocuments());
-		
-		return mp;
-	}
-	 */
-	
-	
-	
 
 }
