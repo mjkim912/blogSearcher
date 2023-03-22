@@ -33,9 +33,9 @@
 ### 3. API 명세
 |Method|URI|설명|
 |------|---|---|
-|GET|localhost:8080/|블로그 검색 화면|
-|POST|localhost:8080/searchKeyword|키워드 검색|
-|GET|localhost:8080/getTopSearched|인기검색어 조회|
+|GET|/|블로그 검색 화면|
+|POST|/searchKeyword|키워드 검색|
+|GET|/getTopSearched|인기검색어 조회|
 
 - /getTopSearched
 ```
