@@ -34,6 +34,24 @@
 |POST|localhost:8080/searchKeyword|키워드 검색|
 |GET|localhost:8080/getTopSearched|인기검색어 조회|
 
-'''
-내용
-'''
+- /getTopSearched
+```
+http://localhost:8080/getTopSearched
+```
+- Response
+```
+[
+  {
+    "id":1,
+    "keyword":"정자역 맛집",
+    "count":8,
+    "lastest_srch_date":"2023-56-22 03:56:57"
+   },
+  {
+    "id":2,
+    "keyword":"감자빵",
+    "count":2,
+    "lastest_srch_date":"2023-57-22 03:57:03"
+  }
+]
+```
