@@ -1,5 +1,6 @@
 package com.project.searchBlog.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 
 import com.project.searchBlog.api.ApiException;
 import com.project.searchBlog.api.WebClientService;
+import com.project.searchBlog.domain.Documents;
+import com.project.searchBlog.domain.NaverItem;
 import com.project.searchBlog.domain.NaverResData;
 import com.project.searchBlog.domain.ResponseData;
 import com.project.searchBlog.domain.TopSearched;
@@ -144,10 +147,11 @@ public class SearchController {
 			NaverResData res = result.share().block();
 			
 			topSearchedService.save(param.get("keyword").toString());
+			List<Documents> blogList = parseNaverApiJson(res.getItems());
 			
 			mp.put("ret", 1);
 			mp.put("api", "naver");
-			mp.put("documents", res.getItems());
+			mp.put("documents", blogList);
 		
 		} catch(ApiException apiException){
 			mp.put("ret", -1);
@@ -155,6 +159,27 @@ public class SearchController {
 		}
 		
 		return mp;
+	}
+	
+	private List<Documents> parseNaverApiJson(NaverItem[] items) {
+		
+		List<Documents> list = new ArrayList<Documents>();
+		
+		
+		for (int i = 0; i < items.length; i++) {
+			NaverItem item = items[i];
+			
+			Documents doc = new Documents();
+			doc.setBlogname(item.getBloggername());
+			doc.setContents(item.getDescription());
+			doc.setTitle(item.getTitle());
+			doc.setUrl(item.getLink());
+			doc.setDatetime(item.getPostdate());
+			
+			list.add(doc);
+		}
+		
+		return list;
 	}
 
 }

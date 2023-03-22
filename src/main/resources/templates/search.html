@@ -161,6 +161,7 @@ p {
 
 const TIME_ZONE = 9 * 60 * 60 * 1000; // 9시간
 
+var webAPI = "kakao";
 var totalCount;
 var recordPerPage = 10;
 var navPage = 10;
@@ -222,9 +223,10 @@ function getData() {
 			return;
 		}
 		
-		//let meta = response.meta;
+		webAPI = response.api;
 		let documents = response.documents;
-		console.log('doc : ', documents);
+		
+		if (documents == null) return;
 		
 		createBlogItems(documents);
 		
@@ -249,8 +251,20 @@ function createBlogItems(items) {
 		cloneItem.attr("style", "display:block");
 		cloneItem.attr("id", "item_" + i);
 		
-		let date = new Date(item.datetime);
-		let localDate = new Date(date.getTime() + TIME_ZONE).toISOString().replace('T', ' ').slice(0, -5);
+		let localDate = new Date();
+		
+		if (webAPI == "kakao") {
+			let date = new Date(item.datetime);
+			localDate = new Date(date.getTime() + TIME_ZONE).toISOString().replace('T', ' ').slice(0, -5);
+			
+		} else if (webAPI == "naver") {
+			let strDate = item.datetime;
+			let y = strDate.substring(0,4);
+		    let m = strDate.substring(4,6);
+		    let d = strDate.substring(6,8);
+
+		    localDate = new Date(Number(y), Number(m)-1, Number(d)).toISOString().replace('T', ' ').slice(0, 11);
+		}
 		
 		cloneItem.find("#blogName").html(item.blogname);
 		cloneItem.find("#blogDatetime").html(localDate);
