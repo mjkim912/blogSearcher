@@ -28,6 +28,10 @@
 
 
 ### 3. API 명세
+
+[카카오 블로그 API]([https://lynmp.com](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-blog))
+[네이버 블로그 API]([[https://lynmp.com](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-blog)](https://developers.naver.com/docs/serviceapi/search/blog/blog.md#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B2%80%EC%83%89-api-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4))
+
 |Method|URI|설명|
 |------|---|---|
 |GET|localhost:8080/|블로그 검색 화면|
