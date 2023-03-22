@@ -29,9 +29,9 @@ public class TopSearchedService {
 		TopSearched searched = topSearchedRepository.findByKeyword(keyword);
 		
 		Date now = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
         String strDate = dateFormat.format(now);
-		
+        
         
 		if (searched != null) {
 			int count = searched.getCount();
