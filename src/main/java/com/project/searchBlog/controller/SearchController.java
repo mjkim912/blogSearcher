@@ -165,7 +165,6 @@ public class SearchController {
 		
 		List<Documents> list = new ArrayList<Documents>();
 		
-		
 		for (int i = 0; i < items.length; i++) {
 			NaverItem item = items[i];
 			
