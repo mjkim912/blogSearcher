@@ -64,4 +64,5 @@ http://localhost:8080/getTopSearched
 
 [네이버 블로그 API](https://developers.naver.com/docs/serviceapi/search/blog/blog.md#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B2%80%EC%83%89-api-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4)
 
-
+### 4. Jar 다운로드
+https://github.com/mjkim912/blogSearcher/raw/main/jar/searchBlogs-0.0.1-SNAPSHOT.jar
