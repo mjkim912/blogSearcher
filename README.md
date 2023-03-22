@@ -5,6 +5,7 @@
 - 개발환경
 - 개발내용
 - API 명세
+- [jar 다운로드](https://github.com/mjkim912/blogSearcher/raw/main/jar/searchBlogs-0.0.1-SNAPSHOT.jar)
 
 ---
 ### 1. 개발환경
